@@ -1,13 +1,21 @@
 const dotenv = require('dotenv');
 const TelegramBot = require('node-telegram-bot-api');
-const express = require('express');
-const app = express();
-const port = process.env.PORT;
+const Agent = require('socks5-https-client/lib/Agent');
 dotenv.config({path: `${__dirname}/config/dev.env`});
 const token = process.env.TELEGRAM;
 console.log(process.env);
-
-const bot = new TelegramBot(token, {polling:true});
+const bot = new TelegramBot(token,{polling:true});
+// const bot = new TelegramBot(token, {
+//               polling:true,
+//               request: {
+//                 agentClass: Agent,
+//                 agentOptions: {
+//                   socksHost: process.env.PROXY_SOCKS5_HOST,
+//                   socksPort: process.env.PROXY_SOCKS5_PORT,
+//                   socksUsername: process.env.PROXY_SOCKS5_USERNAME,
+//                   socksPassword:process.env.PROXY_SOCKS5_PASSWORD
+//                 }
+//               }});
 const request = require('request');
 // app.listen(port,()=>{
 //   bot.onText(/\/weather (.+)/, (msg,match)=>{

@@ -9,13 +9,14 @@
   },
   "author": "",
   "license": "ISC",
-  "engines":{
+  "engines": {
     "node": "10.x"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-telegram-bot-api": "^0.40.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "socks5-https-client": "^1.2.1"
   }
 }
