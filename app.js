@@ -3,12 +3,12 @@ const TelegramBot = require('node-telegram-bot-api');
 const Agent = require('socks5-https-client/lib/Agent');
 dotenv.config({path: `${__dirname}/config/dev.env`});
 const token = process.env.TELEGRAM;
-const port = process.env.PORT||3000;
-const host = process.env.HOST||'0.0.0.0';
-const extUrl = process.env.CUSTOM_ENV_VARIABLE || "https://telegram-kams-weather.herokuapp.com/";
+const port = process.env.PORT||443;
+const host = process.env.HOST||'localhost';
+const extUrl = process.env.CUSTOM_ENV_VARIABLE || "http://telegram-kams-weather.herokuapp.com/";
 
 const bot = new TelegramBot(token,{webHook:{port:port, host: host}});
-bot.setWebHook(extUrl+':3000'+token);
+bot.setWebHook(extUrl+`:${port}`+token);
 // const bot = new TelegramBot (token, {polling:true});
 // const bot = new TelegramBot(token, {
 //               polling:true,
