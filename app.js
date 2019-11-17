@@ -3,8 +3,9 @@ const TelegramBot = require('node-telegram-bot-api');
 const Agent = require('socks5-https-client/lib/Agent');
 dotenv.config({path: `${__dirname}/config/dev.env`});
 const token = process.env.TELEGRAM;
-console.log(process.env);
-const bot = new TelegramBot(token,{polling:true});
+const port = process.env.PORT||3000;
+const host = process.env.HOST;
+const bot = new TelegramBot(token,{webHook:{port:port, host: host}});
 // const bot = new TelegramBot(token, {
 //               polling:true,
 //               request: {
