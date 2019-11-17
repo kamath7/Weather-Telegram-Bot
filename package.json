@@ -1,11 +1,12 @@
 {
   "name": "telegram-weather-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Telegram bot that gives the weather",
   "main": "app.js",
   "scripts": {
+   
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-telegram-bot-api": "^0.40.0",
+    "now": "^16.5.2",
     "request": "^2.88.0",
     "socks5-https-client": "^1.2.1"
   }
