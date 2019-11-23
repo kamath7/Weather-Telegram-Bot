@@ -1,15 +1,23 @@
 const express = require('express');
-const pkgInfo = require('./package.json');
+const bodyParser = require('body-parser');
+const packageInfo = require('./package.json');
 
-let app = express();
+const app = express();
+app.use(bodyParser.json());
 
-app.get('./',(req,res)=>{
-    res.json({version: pkgInfo.version});
+app.get('./',function(req,res){
+    res.json({version: packageInfo.version});
 });
 
-const server = app.listen(process.env.PORT, function(){
-    let host = server.address().address;
-    let port = server.address().port;
+var server = app.listen(process.env.PORT, "0.0.0.0",()=>{
+    const host = server.address().address;
+    const port = server.address().port;
+    console.log(`Web server started http://${host}:${port}`); 
+})
 
-    console.log(`Web server started http://${host}:${port}`);
-});
+module.exports = (bot)=>{
+    app.post('/'+bot.token,(req,res)=>{
+        bot.processUpdate(req.body);
+        res.sendStatus(200);
+    });
+};

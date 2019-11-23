@@ -1,10 +1,17 @@
-const dotenv = require('dotenv');
+const token = process.env.TOKEN;
+
 const TelegramBot = require('node-telegram-bot-api');
+let bot;
 
-dotenv.config({path: `${__dirname}/config/dev.env`});
-const token = process.env.TELEGRAM;
+if(process.env.NODE_ENV === 'production'){
+  bot = new TelegramBot(token);
+  bot.setWebHook(process.env.HEROKU_URL + bot.token);
+}else{
+  bot = new TelegramBot(token,{polling:true});
+}
 
-const bot = new TelegramBot(token,{polling:true});
+console.log(`Bot server started in ${process.env.NODE_ENV} mode`);
+
 const request = require('request');
 
 bot.onText(/\/weather (.+)/, (msg,match)=>{
@@ -24,3 +31,5 @@ bot.onText(/\/weather (.+)/, (msg,match)=>{
                   }
       });
   });
+
+  module.exports = bot;

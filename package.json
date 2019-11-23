@@ -4,7 +4,7 @@
   "description": "Telegram bot that gives the weather",
   "main": "app.js",
   "scripts": {
-   "now-start": "nodemon .",
+    "now-start": "nodemon .",
     "start": "node app.js",
     "test": "node app.js"
   },
@@ -14,11 +14,11 @@
     "node": "10.x"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-telegram-bot-api": "^0.40.0",
     "now": "^16.5.2",
-    "request": "^2.88.0",
-    "socks5-https-client": "^1.2.1"
+    "request": "^2.88.0"
   }
 }
