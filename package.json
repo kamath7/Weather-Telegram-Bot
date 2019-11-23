@@ -1,11 +1,11 @@
 {
-  "name": "telegram-weather-bot",
-  "version": "1.0.0",
+  "name": "kams-telegram-bot",
+  "version": "2.0.0",
   "description": "Telegram bot that gives the weather",
   "main": "app.js",
   "scripts": {
-   
-    "start": "node app.js",
+   "now-start": "nodemon .",
+    "start": "nodemon .",
     "test": "node app.js"
   },
   "author": "",

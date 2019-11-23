@@ -1,15 +1,10 @@
 {
     "version": 2,
+    "name": "kams-telegram-bot",
     "builds": [
         {
-            "src": "app.js",
-            "user": "@now/node-server"
-        }
-    ],
-    "routes":[
-        {
-            "src":"/(.*)",
-            "dest": "app.js"
+            "src": "*.js",
+            "use": "@now/node"
         }
     ]
 }
